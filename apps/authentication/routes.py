@@ -58,33 +58,28 @@ def login():
 def register():
     create_account_form = CreateAccountForm(request.form)
     if 'register' in request.form:
-
         username = request.form['username']
+        phone = request.form['phone']  # 确保这行在这里
         email = request.form['email']
-
-        # Check usename exists
+        
+        # 检查用户名、电话和邮箱是否已存在
         user = Users.query.filter_by(username=username).first()
-        if user:
+        user_by_email = Users.query.filter_by(email=email).first()
+        user_by_phone = Users.query.filter_by(phone=phone).first()  # 可以添加电话号码的唯一性检查
+        if user or user_by_email or user_by_phone:
             return render_template('accounts/register.html',
-                                   msg='Username already registered',
+                                   msg='Username, Email or Phone already registered',
                                    success=False,
                                    form=create_account_form)
 
-        # Check email exists
-        user = Users.query.filter_by(email=email).first()
-        if user:
-            return render_template('accounts/register.html',
-                                   msg='Email already registered',
-                                   success=False,
-                                   form=create_account_form)
-
-        # else we can create the user
+        # 创建新用户
         user = Users(**request.form)
         db.session.add(user)
         db.session.commit()
 
+        # 重定向到登录页面
         return render_template('accounts/register.html',
-                               msg='User created please <a href="/login">login</a>',
+                               msg='User created successfully.',
                                success=True,
                                form=create_account_form)
 

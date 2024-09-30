@@ -47,42 +47,40 @@
           <div class="input-group mb-3">
             {{ form.username(placeholder="Username", class="form-control") }}
             <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-user"></span>
-              </div>
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            {{ form.phone(placeholder="Phone", class="form-control") }}
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-phone"></span>
+                </div>
             </div>
           </div>
           <div class="input-group mb-3">
             {{ form.email(placeholder="Email", class="form-control") }}
             <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope"></span>
-              </div>
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
             </div>
           </div>
           <div class="input-group mb-3">
             {{ form.password(placeholder="Password", class="form-control", type="password") }}
             <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock"></span>
-              </div>
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
             </div>
           </div>
           
           <div class="row">
-            <div class="col-8">
-              <div class="icheck-primary">
-                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                <label for="agreeTerms">
-                I agree to the <a href="#">terms</a>
-                </label>
-              </div>
-            </div>
-            <!-- /.col -->
-            <div class="col-4">
+            <div class="col-12">
               <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
             </div>
-            <!-- /.col -->
           </div>
         </form>
 
